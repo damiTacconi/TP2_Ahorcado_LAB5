@@ -1,0 +1,9 @@
+CREATE DATABASE ahorcado;
+
+USE ahorcado;
+
+CREATE TABLE words(
+id_word INT AUTO_INCREMENT NOT NULL,
+word_name VARCHAR(50) NOT NULL,
+CONSTRAINT pk_id_words PRIMARY KEY (id_word)
+);
