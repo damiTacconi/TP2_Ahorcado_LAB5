@@ -24,4 +24,6 @@ public class Player extends Thread {
     public void setLives(int lives) {
         this.lives = lives;
     }
+
+
 }
