@@ -9,6 +9,7 @@ public class Game {
     protected String word;
     protected List<Character> characters;
     protected boolean gameFinished;
+    protected boolean playing = false;
 
 
     public Game(String word) {
@@ -22,11 +23,11 @@ public class Game {
         this.gameFinished = false;
     }
 
-    public boolean isGameFinished() {
+    boolean isGameFinished() {
         return gameFinished;
     }
 
-    public synchronized void compareCharacter(char character , Player player){
+    private synchronized void compareCharacter(char character , Player player){
         boolean lostLives = true;
         for (int i = 0; i < word.length() && lostLives; i++)
         {
@@ -63,26 +64,45 @@ public class Game {
     }
 
 
-    public synchronized void showWord(){
+    private synchronized void showWord(){
         characters.forEach( c -> System.out.print(c.getState() + " "));
     }
 
-    public synchronized void selectLetter(Player player){
-       if(!this.gameFinished && letters.size() > 0)
-       {
-           char c = this.getLetter();
-           System.out.println(String.format("\n\n%s ELIGIO LA LETRA %c !!" , player.getPlayerName() , c));
-           compareCharacter(c , player);
-           showWord();
-           try {
-               Thread.sleep(App.THREAD_SLEEP);
-           } catch (InterruptedException e) {
-               e.printStackTrace();
-           }
+    private void selectLetter(Player player){
 
-       }else Thread.currentThread().interrupt();
+        if(!this.gameFinished && letters.size() > 0)
+        {
+            char c = this.getLetter();
+            System.out.println(String.format("\n\n%s ELIGIO LA LETRA %c !!" , player.getPlayerName() , c));
+            compareCharacter(c , player);
+            showWord();
+            try {
+                Thread.sleep(App.THREAD_SLEEP);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+        }else Thread.currentThread().interrupt();
+    }
+
+    synchronized void play(Player player){
+        while (playing) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        playing = true;
+
+        selectLetter(player);
+
+        playing = false;
+        notify();
 
     }
+
     private void inicListLetters(){
         this.letters = new ArrayList<>(Arrays.asList(
                 'A','B','C','D','E','F','G','H','I','J',
@@ -91,7 +111,7 @@ public class Game {
         ));
     }
 
-    public synchronized char getLetter(){
+    private synchronized char getLetter(){
         Random r = new Random();
         return letters.remove(r.nextInt(letters.size()));
     }

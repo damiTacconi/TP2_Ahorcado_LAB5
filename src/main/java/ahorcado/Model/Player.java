@@ -28,10 +28,8 @@ public class Player extends Thread {
 
     @Override
     public void run(){
-
-        while ( !game.isGameFinished() && lives > 0)
-        {
-            game.selectLetter(this);
+        while( !game.isGameFinished() && lives > 0) {
+            game.play(this);
         }
     }
 
