@@ -3,11 +3,10 @@ package ahorcado.Model;
 public class Character {
 
     protected char letter;
-    protected boolean correct;
+    protected char state = '_';
 
-    public Character(char letter, boolean correct) {
+    public Character(char letter) {
         this.letter = letter;
-        this.correct = correct;
     }
 
     public char getLetter() {
@@ -19,10 +18,14 @@ public class Character {
     }
 
     public boolean isCorrect() {
-        return correct;
+        return this.state != '_';
     }
 
-    public void setCorrect(boolean correct) {
-        this.correct = correct;
+    public char getState() {
+        return state;
+    }
+
+    public void setState(char state) {
+        this.state = state;
     }
 }

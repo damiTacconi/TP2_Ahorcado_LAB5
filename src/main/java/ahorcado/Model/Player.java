@@ -3,10 +3,11 @@ package ahorcado.Model;
 public class Player extends Thread {
     protected String playerName;
     protected int lives;
-
-    public Player(String name, int lives) {
+    protected Game game;
+    public Player(String name, int lives , Game game) {
         this.playerName = name;
         this.lives = lives;
+        this.game = game;
     }
 
     public String getPlayerName() {
@@ -25,5 +26,13 @@ public class Player extends Thread {
         this.lives = lives;
     }
 
+    @Override
+    public void run(){
+
+        while ( !game.isGameFinished() && lives > 0)
+        {
+            game.selectLetter(this);
+        }
+    }
 
 }
