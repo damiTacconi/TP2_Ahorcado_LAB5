@@ -34,10 +34,11 @@ public class Game {
             if(word.charAt(i) == character){
                 lostLives = false;
                 addCharacter(character);
-                if(checkFinishedGame()){
-                    gameFinished = true;
+                gameFinished = checkFinishedGame();
+
+                if(gameFinished)
                     System.out.println(String.format("EL GANADOR ES %s !!" , player.getPlayerName()));
-                }
+
             }
         }
         if(lostLives) {
