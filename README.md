@@ -31,7 +31,7 @@ está esperando a que ocurra alguna cosa)
 de algun llamado al metodo **stop()**, **interrupt()**... o tambien a causa de una Excepcion.
 
 ## Metodos [start , sleep, yield , join]
-* start(): usado para iniciar el cuerpo del thread definido por el método run().
-* sleep(): pone a dormir un thread por un  tiempo mínimo especificado.
-* join(): usado para esperar por el término del thread sobre la cual el método es invoacado, por ejemplo por término de método run().
-* yield(): este metodo le cede el CPU a otro hilo pero no finaliza su ejecucion, solo lo mantendra en pausa momentaneamente, tambien puede suceder que el mismo hilo que llamo al metodo yield() vuelva a ser elegido para ejecutarse.
+* **start()**: se usa para iniciar el hilo, a partir de este metodo se ejecutara posteriormente, el metodo run().
+* **sleep()**: pone a dormir un thread por un tiempo determinado.
+* **join()**: usado para esperar que su ejecucion finalize, por ejemplo por término del método run().
+* **yield()**: este metodo le cede el CPU a otro hilo pero no finaliza su ejecucion, solo lo mantendra en pausa momentaneamente, tambien puede suceder que el mismo hilo que llamo al metodo yield() vuelva a ser elegido para ejecutarse.
