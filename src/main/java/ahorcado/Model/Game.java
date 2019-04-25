@@ -10,6 +10,7 @@ public class Game {
     protected List<Character> characters;
     protected boolean gameFinished;
     protected boolean playing = false;
+    protected Player ganador = null;
 
 
     public Game(String word) {
@@ -33,17 +34,17 @@ public class Game {
         {
             if(word.charAt(i) == character){
                 lostLives = false;
-                addCharacter(character);
-                gameFinished = checkFinishedGame();
-
-                if(gameFinished)
-                    System.out.println(String.format("EL GANADOR ES %s !!" , player.getPlayerName()));
-
             }
         }
+
         if(lostLives) {
             player.setLives( player.getLives() - 1);
-            System.out.println(player.getPlayerName() + " SE EQUIVOCO !! LE QUEDAN " + player.getLives() + " VIDAS");
+            System.out.println(String.format(" %s%s SE EQUIVOCO !! LE QUEDAN %d VIDAS !! %s ",
+                    App.ANSI_RED ,player.getPlayerName(), player.getLives(), App.ANSI_RESET));
+        }else{
+            addCharacter(character);
+            gameFinished = checkFinishedGame();
+            if (gameFinished) ganador = player;
         }
     }
 
@@ -115,5 +116,9 @@ public class Game {
     private synchronized char getLetter(){
         Random r = new Random();
         return letters.remove(r.nextInt(letters.size()));
+    }
+
+    public Player getGanador() {
+        return ganador;
     }
 }
