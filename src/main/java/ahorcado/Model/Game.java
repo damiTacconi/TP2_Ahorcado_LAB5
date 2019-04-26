@@ -88,10 +88,11 @@ public class Game {
     }
 
     synchronized void play(Player player){
-        while (playing) {
-            try {
+
+        while(playing){
+            try{
                 wait();
-            } catch (InterruptedException e) {
+            }catch (InterruptedException e){
                 e.printStackTrace();
             }
         }

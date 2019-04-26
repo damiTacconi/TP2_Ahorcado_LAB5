@@ -1,5 +1,6 @@
 package ahorcado;
 
+import ahorcado.Database.WinnerDB;
 import ahorcado.Database.WordsDB;
 import ahorcado.Model.Game;
 import ahorcado.Model.Player;
@@ -44,11 +45,13 @@ public class App
                 player3.join();
                 player4.join();
 
-                if(Objects.isNull(game.getGanador())){
+                Player ganador = game.getGanador();
+                if(Objects.isNull(ganador)){
                     System.out.println(String.format(ANSI_GREEN + "\nNO HAY GANADOR! LA PALABRA ES: %s !" + ANSI_RESET, word));
                 }else{
                     System.out.println(String.format(ANSI_GREEN + "\n EL GANADOR ES %s !! " + ANSI_RESET
                             , game.getGanador().getPlayerName()));
+                    WinnerDB.getInstance().insert(word, ganador.getPlayerName());
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();
