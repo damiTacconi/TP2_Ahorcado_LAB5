@@ -2,8 +2,9 @@ package ahorcado.Database;
 
 import ahorcado.Config.MySQLConnection;
 
-import java.sql.*;
-import java.text.SimpleDateFormat;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 

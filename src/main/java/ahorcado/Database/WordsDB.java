@@ -2,7 +2,9 @@ package ahorcado.Database;
 
 import ahorcado.Config.MySQLConnection;
 
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class WordsDB {
 
