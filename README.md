@@ -10,7 +10,7 @@ el metodo **run()** e iniciar el hilo con el metodo **start()**
 
 ### Runnable
 
-Por otro lado, **Runnable** es solo una interfaz que implementa el metodo **run()**. Al crear una instancia de Thread, este
+**Runnable** es solo una interfaz que implementa el metodo **run()**. Al crear una instancia de Thread, este
 puede recibir en su constructor un objeto que implemente dicha interfaz y luego ejecutarlo al invocar el metodo **start()**.
 Esto tambien puede ser de utilidad en caso de que el objeto ya herede de otra clase y necesite ejecutar codigo multitarea.
 
