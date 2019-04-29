@@ -45,13 +45,13 @@ public class App
                 player3.join();
                 player4.join();
 
-                Player ganador = game.getGanador();
-                if(Objects.isNull(ganador)){
+                Player winner = game.getWinner();
+                if(Objects.isNull(winner)){
                     System.out.println(String.format(ANSI_GREEN + "\nNO HAY GANADOR! LA PALABRA ES: %s !" + ANSI_RESET, word));
                 }else{
                     System.out.println(String.format(ANSI_GREEN + "\n EL GANADOR ES %s !! " + ANSI_RESET
-                            , game.getGanador().getPlayerName()));
-                    WinnerDB.getInstance().insert(word, ganador.getPlayerName());
+                            , winner.getPlayerName()));
+                    WinnerDB.getInstance().insert(word, winner.getPlayerName());
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();

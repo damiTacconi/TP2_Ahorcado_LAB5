@@ -10,7 +10,7 @@ public class Game {
     protected List<Character> characters;
     protected boolean gameFinished;
     protected boolean playing = false;
-    protected Player ganador = null;
+    protected Player winner = null;
 
 
     public Game(String word) {
@@ -22,6 +22,14 @@ public class Game {
             characters.add(new Character(c));
         }
         this.gameFinished = false;
+    }
+
+    private void inicListLetters(){
+        this.letters = new ArrayList<>(Arrays.asList(
+                'A','B','C','D','E','F','G','H','I','J',
+                'K','L','N','Ñ','M','O','P','Q','R','S','T',
+                'U','V','W','X','Y','Z'
+        ));
     }
 
     boolean isGameFinished() {
@@ -44,7 +52,7 @@ public class Game {
         }else{
             addCharacter(character);
             gameFinished = checkFinishedGame();
-            if (gameFinished) ganador = player;
+            if (gameFinished) winner = player;
         }
     }
 
@@ -106,20 +114,12 @@ public class Game {
 
     }
 
-    private void inicListLetters(){
-        this.letters = new ArrayList<>(Arrays.asList(
-                'A','B','C','D','E','F','G','H','I','J',
-                'K','L','N','Ñ','M','O','P','Q','R','S','T',
-                'U','V','W','X','Y','Z'
-        ));
-    }
-
     private synchronized char getLetter(){
         Random r = new Random();
         return letters.remove(r.nextInt(letters.size()));
     }
 
-    public Player getGanador() {
-        return ganador;
+    public Player getWinner() {
+        return winner;
     }
 }
