@@ -4,8 +4,7 @@
 
 ### Thread
 
-Un **Thread** es un hilo de ejecucion que puede ejecutar secuencias de codigo en simultaneo para realizar
-diferentes tareas. Para crear una clase que pueda cumplir funciones multitarea, una opcion es heredar de
+Para crear una clase que pueda cumplir funciones multitarea, una opcion es heredar de
 la clase Thread adquiriendo ademas todas las propiedades y comportamientos de la misma, luego se procede a sobre-escribir
 el metodo **run()** e iniciar el hilo con el metodo **start()**
 
