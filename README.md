@@ -4,14 +4,13 @@
 
 ### Thread
 
-Un **Thread** es un hilo de ejecucion que puede ejecutar secuencias de codigo en simultaneo para realizar
-diferentes tareas. Para crear una clase que pueda cumplir funciones multitarea, una opcion es heredar de
+Para crear una clase que pueda cumplir funciones multitarea, una opcion es heredar de
 la clase Thread adquiriendo ademas todas las propiedades y comportamientos de la misma, luego se procede a sobre-escribir
 el metodo **run()** e iniciar el hilo con el metodo **start()**
 
 ### Runnable
 
-Por otro lado, **Runnable** es solo una interfaz que implementa el metodo **run()**. Al crear una instancia de Thread, este
+**Runnable** es solo una interfaz que implementa el metodo **run()**. Al crear una instancia de Thread, este
 puede recibir en su constructor un objeto que implemente dicha interfaz y luego ejecutarlo al invocar el metodo **start()**.
 Esto tambien puede ser de utilidad en caso de que el objeto ya herede de otra clase y necesite ejecutar codigo multitarea.
 
